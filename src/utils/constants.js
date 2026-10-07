@@ -1,7 +1,8 @@
 export const CATEGORIES = [
 "DSA",
 "Git",
-"Technical"
+"Technical",
+"Machine Coding"
 ]
 
 export const DIFFICULTIES = [

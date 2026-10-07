@@ -52,6 +52,7 @@ const QuestionForm = () => {
             <option value="DSA">DSA</option>
             <option value="Git">Git</option>
             <option value="Technical">Technical</option>
+            <option value="Machine Coding">Machine Coding</option>
           </select>
 
           <select

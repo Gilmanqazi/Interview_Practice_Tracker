@@ -9,12 +9,18 @@ const StatsOverview = () => {
   const totalCompleted = questions.filter(
     (q) => q.status === "Completed"
   ).length;
+
   const completedDSA = questions.filter(
     (q) => q.category === "DSA" && q.status === "Completed"
   ).length;
+
   const completedOther = questions.filter(
     (q) => q.category !== "DSA" && q.status === "Completed"
   ).length;
+
+  const machineCodingCompleted = questions.filter(
+    (q)=>q.category === "Machine Coding" && q.status === "Completed"
+  ).length
 
   const progressPercentage =
     totalQuestions > 0
@@ -27,6 +33,7 @@ const StatsOverview = () => {
         <StatsCard title="Total Questions" count={totalQuestions} />
         <StatsCard title="DSA Completed" count={completedDSA} />
         <StatsCard title="Git & Tech Completed" count={completedOther} />
+        <StatsCard title="Machine Coding" count={machineCodingCompleted}/>
       </div>
 
       <ProgressBar progress={progressPercentage} />

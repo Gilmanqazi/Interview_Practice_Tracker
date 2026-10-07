@@ -14,6 +14,7 @@ const Badge = ({ text }) => {
     DSA: "bg-indigo-100 text-indigo-800 border-indigo-200",
     Git: "bg-orange-100 text-orange-800 border-orange-200",
     Technical: "bg-cyan-100 text-cyan-800 border-cyan-200",
+   " Machine Coding": "bg-emerald-100 text-emerald-700 border-emerald-200"
   };
 
   const badgeStyle =
