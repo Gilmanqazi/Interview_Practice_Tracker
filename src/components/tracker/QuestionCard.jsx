@@ -25,7 +25,6 @@ const QuestionCard = ({ question }) => {
         </div>
       </div>
 
-      {/* Right Section: Status Dropdown & Delete Action */}
       <div className="flex items-center gap-3 self-end md:self-auto">
         <select
           value={question?.status}

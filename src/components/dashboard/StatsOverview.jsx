@@ -14,8 +14,12 @@ const StatsOverview = () => {
     (q) => q.category === "DSA" && q.status === "Completed"
   ).length;
 
-  const completedOther = questions.filter(
-    (q) => q.category !== "DSA" && q.status === "Completed"
+  const completedGit = questions.filter(
+    (q) => q.category === "Git" && q.status === "Completed"
+  ).length;
+
+  const completedTechnical = questions.filter(
+    (q) => q.category === "Technical" && q.status === "Completed"
   ).length;
 
   const machineCodingCompleted = questions.filter(
@@ -32,7 +36,8 @@ const StatsOverview = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatsCard title="Total Questions" count={totalQuestions} />
         <StatsCard title="DSA Completed" count={completedDSA} />
-        <StatsCard title="Git & Tech Completed" count={completedOther} />
+        <StatsCard title="Git Completed" count={completedGit} />
+        <StatsCard title="Tech Completed" count={completedTechnical}/>
         <StatsCard title="Machine Coding" count={machineCodingCompleted}/>
       </div>
 
