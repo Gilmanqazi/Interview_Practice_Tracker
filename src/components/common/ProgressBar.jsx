@@ -4,7 +4,7 @@ const ProgressBar = ({ progress = 0 }) => {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center mb-1 text-sm font-medium">
-        <span>Complation Progress</span>
+        <span>Completion Progress</span>
         <span>{clampProgress}%</span>
       </div>
 
