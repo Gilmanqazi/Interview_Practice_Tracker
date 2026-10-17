@@ -1,29 +1,74 @@
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const STATUS_TONE = {
+  Pending: { solid: "#5B6578", on: "#FFFFFF", bg: "#EAEDF3", text: "#3E4758", tick: "#CBD2DE" },
+  "In Progress": { solid: "#F5B72E", on: "#3A2700", bg: "#FDF0CF", text: "#7A5200", tick: "#F5B72E" },
+  Completed: { solid: "#168A5C", on: "#FFFFFF", bg: "#D8F2E5", text: "#0B5C3C", tick: "#1F9D6B" },
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const CATEGORY_TONE = {
+  DSA: "#2B50FF",
+  Git: "#E2572B",
+  Technical: "#0E9AA7",
+  "Machine Coding": "#8A4FFF",
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const categoryColor = (name) => CATEGORY_TONE[name] || "#64748B";
+
+const DIFF_LEVEL = { Easy: 1, Medium: 2, Hard: 3 };
+const DIFF_BAR = { Easy: "#1F9D6B", Medium: "#F0A500", Hard: "#E0434F" };
+const DIFF_TEXT = { Easy: "#0B5C3C", Medium: "#7A5200", Hard: "#A3202B" };
+
 const Badge = ({ text }) => {
-  const colorMap = {
-    // Difficulty
-    Easy: "bg-emerald-100 text-emerald-800 border-emerald-200",
-    Medium: "bg-amber-100 text-amber-800 border-amber-200",
-    Hard: "bg-rose-100 text-rose-800 border-rose-200",
+  if (!text) return null;
 
-    // Status
-    Pending: "bg-slate-100 text-slate-700 border-slate-200",
-    "In Progress": "bg-blue-100 text-blue-800 border-blue-200",
-    Completed: "bg-green-100 text-green-800 border-green-200",
+ 
+  if (DIFF_LEVEL[text]) {
+    return (
+      <span
+        className="inline-flex items-center gap-2 text-xs font-semibold"
+        style={{ color: DIFF_TEXT[text] }}
+      >
+        <span className="flex items-end gap-[2px]" aria-hidden="true">
+          {[1, 2, 3].map((n) => (
+            <span
+              key={n}
+              className="w-[4px] rounded-sm"
+              style={{
+                height: 5 + n * 3,
+                background: n <= DIFF_LEVEL[text] ? DIFF_BAR[text] : "#CBD2DE",
+              }}
+            />
+          ))}
+        </span>
+        {text}
+      </span>
+    );
+  }
 
-    // Category
-    DSA: "bg-indigo-100 text-indigo-800 border-indigo-200",
-    Git: "bg-orange-100 text-orange-800 border-orange-200",
-    Technical: "bg-cyan-100 text-cyan-800 border-cyan-200",
-   " Machine Coding": "bg-emerald-100 text-emerald-700 border-emerald-200"
-  };
 
-  const badgeStyle =
-    colorMap[text] || "bg-gray-100 text-gray-700 border-gray-200";
+  if (STATUS_TONE[text]) {
+    const t = STATUS_TONE[text];
+    return (
+      <span
+        className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold"
+        style={{ background: t.bg, color: t.text }}
+      >
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: t.solid }} />
+        {text}
+      </span>
+    );
+  }
 
   return (
-    <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${badgeStyle}`}
-    >
+    <span className="inline-flex items-center gap-2 text-xs font-semibold text-[#1C2541]">
+      <span
+        className="w-2.5 h-2.5 rounded-[3px]"
+        style={{ background: categoryColor(text) }}
+        aria-hidden="true"
+      />
       {text}
     </span>
   );
